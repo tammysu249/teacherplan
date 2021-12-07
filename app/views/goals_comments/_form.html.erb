@@ -1,0 +1,83 @@
+<% was_validated = goals_comment.errors.any? %>
+
+<%= form_with(model: goals_comment, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for goal_id start -->
+  <div class="form-group">
+    <% goal_class = "form-control" %>
+    <% goal_was_invalid = goals_comment.errors.include?(:goal) %>
+
+    <% if was_validated %>
+      <% if goal_was_invalid %>
+        <% goal_class << " is-invalid" %>
+      <% else %>
+        <% goal_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :goal_id %>
+    <!-- Input for goal_id start -->
+    <%= f.number_field :goal_id, class: goal_class, placeholder: "Enter goal" %>
+    <!-- Input for goal_id end -->
+    <% if goal_was_invalid %>
+      <% goals_comment.errors.full_messages_for(:goal).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for goal_id end -->
+  <!-- Label and input for coach_id start -->
+  <div class="form-group">
+    <% coach_class = "form-control" %>
+    <% coach_was_invalid = goals_comment.errors.include?(:coach) %>
+
+    <% if was_validated %>
+      <% if coach_was_invalid %>
+        <% coach_class << " is-invalid" %>
+      <% else %>
+        <% coach_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :coach_id %>
+    <!-- Input for coach_id start -->
+    <%= f.number_field :coach_id, class: coach_class, placeholder: "Enter coach" %>
+    <!-- Input for coach_id end -->
+    <% if coach_was_invalid %>
+      <% goals_comment.errors.full_messages_for(:coach).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for coach_id end -->
+  <!-- Label and input for content start -->
+  <div class="form-group">
+    <% content_class = "form-control" %>
+    <% content_was_invalid = goals_comment.errors.include?(:content) %>
+
+    <% if was_validated %>
+      <% if content_was_invalid %>
+        <% content_class << " is-invalid" %>
+      <% else %>
+        <% content_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :content %>
+    <!-- Input for content start -->
+    <%= f.text_area :content, class: content_class, placeholder: "Enter content" %>
+    <!-- Input for content end -->
+    <% if content_was_invalid %>
+      <% goals_comment.errors.full_messages_for(:content).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for content end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
