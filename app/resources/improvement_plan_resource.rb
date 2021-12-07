@@ -7,6 +7,8 @@ class ImprovementPlanResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :invites
+
   has_many   :goals
 
   belongs_to :teacher
