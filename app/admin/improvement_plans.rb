@@ -1,5 +1,7 @@
 ActiveAdmin.register ImprovementPlan do
 
+ permit_params :teacher_id, :status
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
