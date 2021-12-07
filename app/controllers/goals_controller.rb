@@ -42,8 +42,14 @@ class GoalsController < ApplicationController
   # DELETE /goals/1
   def destroy
     @goal.destroy
-    redirect_to goals_url, notice: 'Goal was successfully destroyed.'
+    message = "Goal was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to goals_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Plan Comments
+
+    <a data-toggle="collapse" href="#improvement_plan_plan_comments_new_form">
+      Add plan comment
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @improvement_plan.plan_comments.each do |plan_comment| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to plan_comment, plan_comment %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to plan_comment, method: :delete, data: { confirm: "Do you really want to delete this plan_comment" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="improvement_plan_plan_comments_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

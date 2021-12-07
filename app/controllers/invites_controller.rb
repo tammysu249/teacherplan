@@ -42,8 +42,14 @@ class InvitesController < ApplicationController
   # DELETE /invites/1
   def destroy
     @invite.destroy
-    redirect_to invites_url, notice: 'Invite was successfully destroyed.'
+    message = "Invite was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to invites_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

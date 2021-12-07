@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Improvement Plan Assignments
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @teacher.improvement_plan_assignments.each do |improvement_plan| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <a href="/improvement_plans/<%= improvement_plan.id %>">
+          <%= improvement_plan %>
+        </a>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

@@ -42,8 +42,14 @@ class GoalsCommentsController < ApplicationController
   # DELETE /goals_comments/1
   def destroy
     @goals_comment.destroy
-    redirect_to goals_comments_url, notice: 'Goals comment was successfully destroyed.'
+    message = "GoalsComment was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to goals_comments_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Invites
+
+    <a data-toggle="collapse" href="#teacher_invites_new_form">
+      Add invite
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @teacher.invites.each do |invite| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to invite, invite %>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="teacher_invites_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>
