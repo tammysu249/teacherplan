@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Plan Comment #<%= plan_comment.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Improvement plan</dt>
+      <!-- Display improvement_plan_id start -->
+      <dd><%= plan_comment.improvement_plan_id %></dd>
+      <!-- Display improvement_plan_id end -->
+
+      <dt>Coach</dt>
+      <!-- Display coach_id start -->
+      <dd><%= plan_comment.coach_id %></dd>
+      <!-- Display coach_id end -->
+
+      <dt>Content</dt>
+      <!-- Display content start -->
+      <dd><%= plan_comment.content %></dd>
+      <!-- Display content end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back plan_comment, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link plan_comment start -->
+      <div class="col">
+        <%= link_to edit_plan_comment_url(plan_comment), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link plan_comment end -->
+
+      <!-- Delete link plan_comment start -->
+      <div class="col">
+        <%= link_to plan_comment, method: :delete, data: { confirm: "Do you really want to delete this plan_comment?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link plan_comment end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(plan_comment.updated_at) %> ago
+  </div>
+</div>
