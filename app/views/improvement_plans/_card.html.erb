@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Improvement Plan #<%= improvement_plan.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Teacher</dt>
+      <!-- Display teacher_id start -->
+      <dd><%= improvement_plan.teacher_id %></dd>
+      <!-- Display teacher_id end -->
+
+      <dt>Status</dt>
+      <!-- Display status start -->
+      <dd><%= improvement_plan.status %></dd>
+      <!-- Display status end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back improvement_plan, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link improvement_plan start -->
+      <div class="col">
+        <%= link_to edit_improvement_plan_url(improvement_plan), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link improvement_plan end -->
+
+      <!-- Delete link improvement_plan start -->
+      <div class="col">
+        <%= link_to improvement_plan, method: :delete, data: { confirm: "Do you really want to delete this improvement_plan?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link improvement_plan end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(improvement_plan.updated_at) %> ago
+  </div>
+</div>
