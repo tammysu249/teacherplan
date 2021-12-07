@@ -16,7 +16,7 @@
 
     <%= f.label :improvement_plan_id %>
     <!-- Input for improvement_plan_id start -->
-    <%= f.number_field :improvement_plan_id, class: improvement_plan_class, placeholder: "Enter improvement plan" %>
+    <%= f.collection_select :improvement_plan_id, ImprovementPlan.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for improvement_plan_id end -->
     <% if improvement_plan_was_invalid %>
       <% goal.errors.full_messages_for(:improvement_plan).each do |message| %>
