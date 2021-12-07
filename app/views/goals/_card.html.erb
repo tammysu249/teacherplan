@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Goal #<%= goal.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Improvement plan</dt>
+      <!-- Display improvement_plan_id start -->
+      <dd><%= goal.improvement_plan_id %></dd>
+      <!-- Display improvement_plan_id end -->
+
+      <dt>Description</dt>
+      <!-- Display description start -->
+      <dd><%= goal.description %></dd>
+      <!-- Display description end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back goal, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link goal start -->
+      <div class="col">
+        <%= link_to edit_goal_url(goal), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link goal end -->
+
+      <!-- Delete link goal start -->
+      <div class="col">
+        <%= link_to goal, method: :delete, data: { confirm: "Do you really want to delete this goal?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link goal end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(goal.updated_at) %> ago
+  </div>
+</div>

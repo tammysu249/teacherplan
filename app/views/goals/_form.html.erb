@@ -1,0 +1,57 @@
+<% was_validated = goal.errors.any? %>
+
+<%= form_with(model: goal, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for improvement_plan_id start -->
+  <div class="form-group">
+    <% improvement_plan_class = "form-control" %>
+    <% improvement_plan_was_invalid = goal.errors.include?(:improvement_plan) %>
+
+    <% if was_validated %>
+      <% if improvement_plan_was_invalid %>
+        <% improvement_plan_class << " is-invalid" %>
+      <% else %>
+        <% improvement_plan_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :improvement_plan_id %>
+    <!-- Input for improvement_plan_id start -->
+    <%= f.number_field :improvement_plan_id, class: improvement_plan_class, placeholder: "Enter improvement plan" %>
+    <!-- Input for improvement_plan_id end -->
+    <% if improvement_plan_was_invalid %>
+      <% goal.errors.full_messages_for(:improvement_plan).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for improvement_plan_id end -->
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = goal.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% goal.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
