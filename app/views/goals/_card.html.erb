@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Improvement plan</dt>
       <!-- Display improvement_plan_id start -->
-      <dd><%= goal.improvement_plan_id %></dd>
+      <dd>
+        <% if @goal.improvement_plan.present? %>
+          <%= link_to goal.improvement_plan, goal.improvement_plan %>
+        <% end %>
+      </dd>
       <!-- Display improvement_plan_id end -->
 
       <dt>Description</dt>

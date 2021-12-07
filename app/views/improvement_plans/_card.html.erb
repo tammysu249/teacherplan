@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Teacher</dt>
       <!-- Display teacher_id start -->
-      <dd><%= improvement_plan.teacher_id %></dd>
+      <dd>
+        <% if @improvement_plan.teacher.present? %>
+          <%= link_to improvement_plan.teacher, improvement_plan.teacher %>
+        <% end %>
+      </dd>
       <!-- Display teacher_id end -->
 
       <dt>Status</dt>

@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Goal</dt>
       <!-- Display goal_id start -->
-      <dd><%= action_step.goal_id %></dd>
+      <dd>
+        <% if @action_step.goal.present? %>
+          <%= link_to action_step.goal, action_step.goal %>
+        <% end %>
+      </dd>
       <!-- Display goal_id end -->
 
       <dt>Description</dt>
