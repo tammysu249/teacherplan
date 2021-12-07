@@ -7,6 +7,8 @@ class GoalResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :action_steps
+
   belongs_to :improvement_plan
 
   # Indirect associations

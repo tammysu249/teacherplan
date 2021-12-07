@@ -12,6 +12,8 @@ class ActionStepResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :goal
+
   # Indirect associations
 
 end
