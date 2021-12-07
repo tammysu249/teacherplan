@@ -16,7 +16,7 @@
 
     <%= f.label :goal_id %>
     <!-- Input for goal_id start -->
-    <%= f.number_field :goal_id, class: goal_class, placeholder: "Enter goal" %>
+    <%= f.collection_select :goal_id, Goal.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for goal_id end -->
     <% if goal_was_invalid %>
       <% action_step.errors.full_messages_for(:goal).each do |message| %>
