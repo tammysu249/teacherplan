@@ -7,6 +7,8 @@ class ImprovementPlanResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :plan_comments
+
   has_many   :invites
 
   has_many   :goals
