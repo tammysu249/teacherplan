@@ -1,5 +1,7 @@
 class Teacher < ApplicationRecord
-  # Direct associations
+  
+  include JwtToken
+# Direct associations
 
   has_many   :invites,
              :foreign_key => "coach_id",
