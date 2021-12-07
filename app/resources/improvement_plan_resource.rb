@@ -17,4 +17,7 @@ class ImprovementPlanResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :coaches,
+               resource: TeacherResource
+
 end
