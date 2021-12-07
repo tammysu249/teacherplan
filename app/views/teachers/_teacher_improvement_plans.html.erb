@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @teacher.improvement_plans.each do |improvement_plan| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to improvement_plan, improvement_plan %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="teacher_improvement_plans_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "teachers/teacher_improvement_plans_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

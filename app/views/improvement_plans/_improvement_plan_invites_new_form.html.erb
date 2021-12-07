@@ -1,22 +1,12 @@
-<!-- Form invite start -->
 <%= form_with(model: @invite, local: true) do |f| %>
-<!-- Form invite end -->
 
-  <!-- Label and input for coach_id start -->
   <div class="form-group">
     <%= f.label :coach_id %>
 
-    <!-- Input for coach_id start -->
     <%= f.collection_select :coach_id, Teacher.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for coach_id end -->
   </div>
-  <!-- Label and input for coach_id end -->
 
-  <!-- Label and input for improvement_plan_id start -->
-  <!-- Input for improvement_plan_id start -->
   <%= f.hidden_field :improvement_plan_id, value: @improvement_plan.id %>
-  <!-- Input for improvement_plan_id end -->
-  <!-- Label and input for improvement_plan_id end -->
 
   <%= f.submit "Create invite", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

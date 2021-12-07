@@ -1,68 +1,38 @@
-<!-- Form action_step start -->
 <%= form_with(model: @action_step, local: true) do |f| %>
-<!-- Form action_step end -->
 
-  <!-- Label and input for goal_id start -->
-  <!-- Input for goal_id start -->
   <%= f.hidden_field :goal_id, value: @goal.id %>
-  <!-- Input for goal_id end -->
-  <!-- Label and input for goal_id end -->
 
-  <!-- Label and input for description start -->
   <div class="form-group">
     <%= f.label :description %>
 
-    <!-- Input for description start -->
     <%= f.text_field :description, class: "form-control" %>
-    <!-- Input for description end -->
   </div>
-  <!-- Label and input for description end -->
 
-  <!-- Label and input for target_date start -->
   <div class="form-group">
     <%= f.label :target_date %>
 
-    <!-- Input for target_date start -->
     <%= f.date_select :target_date, class: "form-control" %>
-    <!-- Input for target_date end -->
   </div>
-  <!-- Label and input for target_date end -->
 
-  <!-- Label and input for lead_person start -->
   <div class="form-group">
     <%= f.label :lead_person %>
-    <!-- Input for lead_person start -->
     <%= f.text_area :lead_person, rows: "3", class: "form-control" %>
-    <!-- Input for lead_person end -->
   </div>
-  <!-- Label and input for lead_person end -->
 
-  <!-- Label and input for resources_needed start -->
   <div class="form-group">
     <%= f.label :resources_needed %>
-    <!-- Input for resources_needed start -->
     <%= f.text_area :resources_needed, rows: "3", class: "form-control" %>
-    <!-- Input for resources_needed end -->
   </div>
-  <!-- Label and input for resources_needed end -->
 
-  <!-- Label and input for implementation_specifics start -->
   <div class="form-group">
     <%= f.label :implementation_specifics %>
-    <!-- Input for implementation_specifics start -->
     <%= f.text_area :implementation_specifics, rows: "3", class: "form-control" %>
-    <!-- Input for implementation_specifics end -->
   </div>
-  <!-- Label and input for implementation_specifics end -->
 
-  <!-- Label and input for measures_of_success start -->
   <div class="form-group">
     <%= f.label :measures_of_success %>
-    <!-- Input for measures_of_success start -->
     <%= f.text_area :measures_of_success, rows: "3", class: "form-control" %>
-    <!-- Input for measures_of_success end -->
   </div>
-  <!-- Label and input for measures_of_success end -->
 
   <%= f.submit "Create action step", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

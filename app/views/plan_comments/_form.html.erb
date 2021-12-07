@@ -1,7 +1,6 @@
 <% was_validated = plan_comment.errors.any? %>
 
 <%= form_with(model: plan_comment, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for improvement_plan_id start -->
   <div class="form-group">
     <% improvement_plan_class = "form-control" %>
     <% improvement_plan_was_invalid = plan_comment.errors.include?(:improvement_plan) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :improvement_plan_id %>
-    <!-- Input for improvement_plan_id start -->
     <%= f.collection_select :improvement_plan_id, ImprovementPlan.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for improvement_plan_id end -->
     <% if improvement_plan_was_invalid %>
       <% plan_comment.errors.full_messages_for(:improvement_plan).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for improvement_plan_id end -->
-  <!-- Label and input for coach_id start -->
   <div class="form-group">
     <% coach_class = "form-control" %>
     <% coach_was_invalid = plan_comment.errors.include?(:coach) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :coach_id %>
-    <!-- Input for coach_id start -->
     <%= f.number_field :coach_id, class: coach_class, placeholder: "Enter coach" %>
-    <!-- Input for coach_id end -->
     <% if coach_was_invalid %>
       <% plan_comment.errors.full_messages_for(:coach).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for coach_id end -->
-  <!-- Label and input for content start -->
   <div class="form-group">
     <% content_class = "form-control" %>
     <% content_was_invalid = plan_comment.errors.include?(:content) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :content %>
-    <!-- Input for content start -->
     <%= f.text_area :content, class: content_class, placeholder: "Enter content" %>
-    <!-- Input for content end -->
     <% if content_was_invalid %>
       <% plan_comment.errors.full_messages_for(:content).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for content end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

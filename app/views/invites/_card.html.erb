@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Coach</dt>
-      <!-- Display coach_id start -->
       <dd>
         <% if @invite.coach.present? %>
           <%= link_to invite.coach, invite.coach %>
         <% end %>
       </dd>
-      <!-- Display coach_id end -->
 
       <dt>Improvement plan</dt>
-      <!-- Display improvement_plan_id start -->
       <dd>
         <% if @invite.improvement_plan.present? %>
           <%= link_to invite.improvement_plan, invite.improvement_plan %>
         <% end %>
       </dd>
-      <!-- Display improvement_plan_id end -->
 
     </dl>
 
@@ -30,21 +26,17 @@
         <%= link_to_show_or_back invite, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link invite start -->
       <div class="col">
         <%= link_to edit_invite_url(invite), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link invite end -->
 
-      <!-- Delete link invite start -->
       <div class="col">
         <%= link_to invite, method: :delete, data: { confirm: "Do you really want to delete this invite?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link invite end -->
     </div>
   </div>
 

@@ -1,7 +1,6 @@
 <% was_validated = invite.errors.any? %>
 
 <%= form_with(model: invite, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for coach_id start -->
   <div class="form-group">
     <% coach_class = "form-control" %>
     <% coach_was_invalid = invite.errors.include?(:coach) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :coach_id %>
-    <!-- Input for coach_id start -->
     <%= f.collection_select :coach_id, Teacher.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for coach_id end -->
     <% if coach_was_invalid %>
       <% invite.errors.full_messages_for(:coach).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for coach_id end -->
-  <!-- Label and input for improvement_plan_id start -->
   <div class="form-group">
     <% improvement_plan_class = "form-control" %>
     <% improvement_plan_was_invalid = invite.errors.include?(:improvement_plan) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :improvement_plan_id %>
-    <!-- Input for improvement_plan_id start -->
     <%= f.collection_select :improvement_plan_id, ImprovementPlan.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for improvement_plan_id end -->
     <% if improvement_plan_was_invalid %>
       <% invite.errors.full_messages_for(:improvement_plan).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for improvement_plan_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

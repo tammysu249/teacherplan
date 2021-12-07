@@ -6,18 +6,14 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Teacher</dt>
-      <!-- Display teacher_id start -->
       <dd>
         <% if @improvement_plan.teacher.present? %>
           <%= link_to improvement_plan.teacher, improvement_plan.teacher %>
         <% end %>
       </dd>
-      <!-- Display teacher_id end -->
 
       <dt>Status</dt>
-      <!-- Display status start -->
       <dd><%= improvement_plan.status %></dd>
-      <!-- Display status end -->
 
     </dl>
 
@@ -26,7 +22,6 @@
         <%= link_to_show_or_back improvement_plan, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link improvement_plan start -->
       <div class="col">
         <% if current_teacher == @improvement_plan.teacher %>
           <%= link_to edit_improvement_plan_url(improvement_plan), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -34,9 +29,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link improvement_plan end -->
 
-      <!-- Delete link improvement_plan start -->
       <div class="col">
         <% if current_teacher == @improvement_plan.teacher %>
           <%= link_to improvement_plan, method: :delete, data: { confirm: "Do you really want to delete this improvement_plan?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -44,7 +37,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link improvement_plan end -->
     </div>
   </div>
 

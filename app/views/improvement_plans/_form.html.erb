@@ -1,12 +1,7 @@
 <% was_validated = improvement_plan.errors.any? %>
 
 <%= form_with(model: improvement_plan, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for teacher_id start -->
-  <!-- Input for "teacher_id" start -->
   <%= f.hidden_field :teacher_id, value: current_teacher.id %>
-  <!-- Input for "teacher_id" end -->
-  <!-- Label and input for teacher_id end -->
-  <!-- Label and input for status start -->
   <div class="form-group">
     <% status_class = "form-control" %>
     <% status_was_invalid = improvement_plan.errors.include?(:status) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :status %>
-    <!-- Input for status start -->
     <%= f.text_field :status, class: status_class, placeholder: "Enter status" %>
-    <!-- Input for status end -->
     <% if status_was_invalid %>
       <% improvement_plan.errors.full_messages_for(:status).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,6 +24,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for status end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
