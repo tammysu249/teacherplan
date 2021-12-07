@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Teacher #<%= teacher.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>First name</dt>
+      <!-- Display first_name start -->
+      <dd><%= teacher.first_name %></dd>
+      <!-- Display first_name end -->
+
+      <dt>Last name</dt>
+      <!-- Display last_name start -->
+      <dd><%= teacher.last_name %></dd>
+      <!-- Display last_name end -->
+
+      <dt>School</dt>
+      <!-- Display school start -->
+      <dd><%= teacher.school %></dd>
+      <!-- Display school end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back teacher, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link teacher start -->
+      <div class="col">
+        <%= link_to edit_teacher_url(teacher), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link teacher end -->
+
+      <!-- Delete link teacher start -->
+      <div class="col">
+        <%= link_to teacher, method: :delete, data: { confirm: "Do you really want to delete this teacher?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link teacher end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(teacher.updated_at) %> ago
+  </div>
+</div>
