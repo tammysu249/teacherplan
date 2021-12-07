@@ -1,6 +1,10 @@
 class Teacher < ApplicationRecord
   # Direct associations
 
+  has_many   :invites,
+             :foreign_key => "coach_id",
+             :dependent => :destroy
+
   has_many   :improvement_plans,
              :dependent => :destroy
 

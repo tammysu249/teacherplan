@@ -4,6 +4,8 @@ RSpec.describe Invite, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:coach) }
+
     end
 
     describe "InDirect Associations" do
