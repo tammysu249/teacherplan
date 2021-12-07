@@ -10,6 +10,10 @@ class Teacher < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :improvement_plan_assignments,
+             :through => :invites,
+             :source => :improvement_plan
+
   # Validations
 
   # Scopes

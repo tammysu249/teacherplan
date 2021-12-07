@@ -12,6 +12,8 @@ RSpec.describe Teacher, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:improvement_plan_assignments) }
+
     end
 
     describe "Validations" do
