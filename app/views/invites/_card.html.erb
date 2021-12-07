@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Invite #<%= invite.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Coach</dt>
+      <!-- Display coach_id start -->
+      <dd><%= invite.coach_id %></dd>
+      <!-- Display coach_id end -->
+
+      <dt>Improvement plan</dt>
+      <!-- Display improvement_plan_id start -->
+      <dd><%= invite.improvement_plan_id %></dd>
+      <!-- Display improvement_plan_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back invite, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link invite start -->
+      <div class="col">
+        <%= link_to edit_invite_url(invite), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link invite end -->
+
+      <!-- Delete link invite start -->
+      <div class="col">
+        <%= link_to invite, method: :delete, data: { confirm: "Do you really want to delete this invite?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link invite end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(invite.updated_at) %> ago
+  </div>
+</div>
