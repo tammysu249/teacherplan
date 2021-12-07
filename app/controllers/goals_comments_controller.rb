@@ -3,7 +3,8 @@ class GoalsCommentsController < ApplicationController
 
   # GET /goals_comments
   def index
-    @goals_comments = GoalsComment.page(params[:page]).per(10)
+    @q = GoalsComment.ransack(params[:q])
+    @goals_comments = @q.result(:distinct => true).includes(:goal).page(params[:page]).per(10)
   end
 
   # GET /goals_comments/1

@@ -3,7 +3,8 @@ class PlanCommentsController < ApplicationController
 
   # GET /plan_comments
   def index
-    @plan_comments = PlanComment.page(params[:page]).per(10)
+    @q = PlanComment.ransack(params[:q])
+    @plan_comments = @q.result(:distinct => true).includes(:improvement_plan).page(params[:page]).per(10)
   end
 
   # GET /plan_comments/1

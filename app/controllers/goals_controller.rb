@@ -3,7 +3,8 @@ class GoalsController < ApplicationController
 
   # GET /goals
   def index
-    @goals = Goal.page(params[:page]).per(10)
+    @q = Goal.ransack(params[:q])
+    @goals = @q.result(:distinct => true).includes(:improvement_plan, :action_steps, :goals_comments).page(params[:page]).per(10)
   end
 
   # GET /goals/1

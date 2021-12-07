@@ -5,7 +5,8 @@ class ImprovementPlansController < ApplicationController
 
   # GET /improvement_plans
   def index
-    @improvement_plans = ImprovementPlan.page(params[:page]).per(10)
+    @q = ImprovementPlan.ransack(params[:q])
+    @improvement_plans = @q.result(:distinct => true).includes(:teacher, :goals, :invites, :plan_comments, :coaches).page(params[:page]).per(10)
   end
 
   # GET /improvement_plans/1

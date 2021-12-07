@@ -3,7 +3,8 @@ class InvitesController < ApplicationController
 
   # GET /invites
   def index
-    @invites = Invite.page(params[:page]).per(10)
+    @q = Invite.ransack(params[:q])
+    @invites = @q.result(:distinct => true).includes(:coach, :improvement_plan).page(params[:page]).per(10)
   end
 
   # GET /invites/1
