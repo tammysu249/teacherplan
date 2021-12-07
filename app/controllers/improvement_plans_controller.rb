@@ -1,4 +1,6 @@
 class ImprovementPlansController < ApplicationController
+  before_action :current_teacher_must_be_improvement_plan_teacher, only: [:edit, :update, :destroy] 
+
   before_action :set_improvement_plan, only: [:show, :edit, :update, :destroy]
 
   # GET /improvement_plans
@@ -60,6 +62,14 @@ class ImprovementPlansController < ApplicationController
 
 
   private
+
+  def current_teacher_must_be_improvement_plan_teacher
+    set_improvement_plan
+    unless current_teacher == @improvement_plan.teacher
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_improvement_plan
       @improvement_plan = ImprovementPlan.find(params[:id])

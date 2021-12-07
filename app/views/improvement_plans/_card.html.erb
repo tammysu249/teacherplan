@@ -24,16 +24,20 @@
 
       <!-- Edit link improvement_plan start -->
       <div class="col">
-        <%= link_to edit_improvement_plan_url(improvement_plan), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_teacher == @improvement_plan.teacher %>
+          <%= link_to edit_improvement_plan_url(improvement_plan), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link improvement_plan end -->
 
       <!-- Delete link improvement_plan start -->
       <div class="col">
-        <%= link_to improvement_plan, method: :delete, data: { confirm: "Do you really want to delete this improvement_plan?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_teacher == @improvement_plan.teacher %>
+          <%= link_to improvement_plan, method: :delete, data: { confirm: "Do you really want to delete this improvement_plan?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link improvement_plan end -->
