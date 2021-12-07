@@ -16,7 +16,7 @@
 
     <%= f.label :coach_id %>
     <!-- Input for coach_id start -->
-    <%= f.number_field :coach_id, class: coach_class, placeholder: "Enter coach" %>
+    <%= f.collection_select :coach_id, Teacher.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for coach_id end -->
     <% if coach_was_invalid %>
       <% invite.errors.full_messages_for(:coach).each do |message| %>
