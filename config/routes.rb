@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "improvement_plans#index"
   resources :plan_comments
   resources :goals_comments
   resources :action_steps
