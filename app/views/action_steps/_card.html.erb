@@ -1,0 +1,71 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Action Step #<%= action_step.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Goal</dt>
+      <!-- Display goal_id start -->
+      <dd><%= action_step.goal_id %></dd>
+      <!-- Display goal_id end -->
+
+      <dt>Description</dt>
+      <!-- Display description start -->
+      <dd><%= action_step.description %></dd>
+      <!-- Display description end -->
+
+      <dt>Target date</dt>
+      <!-- Display target_date start -->
+      <dd><%= action_step.target_date %></dd>
+      <!-- Display target_date end -->
+
+      <dt>Lead person</dt>
+      <!-- Display lead_person start -->
+      <dd><%= action_step.lead_person %></dd>
+      <!-- Display lead_person end -->
+
+      <dt>Resources needed</dt>
+      <!-- Display resources_needed start -->
+      <dd><%= action_step.resources_needed %></dd>
+      <!-- Display resources_needed end -->
+
+      <dt>Implementation specifics</dt>
+      <!-- Display implementation_specifics start -->
+      <dd><%= action_step.implementation_specifics %></dd>
+      <!-- Display implementation_specifics end -->
+
+      <dt>Measures of success</dt>
+      <!-- Display measures_of_success start -->
+      <dd><%= action_step.measures_of_success %></dd>
+      <!-- Display measures_of_success end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back action_step, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link action_step start -->
+      <div class="col">
+        <%= link_to edit_action_step_url(action_step), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link action_step end -->
+
+      <!-- Delete link action_step start -->
+      <div class="col">
+        <%= link_to action_step, method: :delete, data: { confirm: "Do you really want to delete this action_step?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link action_step end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(action_step.updated_at) %> ago
+  </div>
+</div>

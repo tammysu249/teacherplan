@@ -1,0 +1,187 @@
+<% was_validated = action_step.errors.any? %>
+
+<%= form_with(model: action_step, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for goal_id start -->
+  <div class="form-group">
+    <% goal_class = "form-control" %>
+    <% goal_was_invalid = action_step.errors.include?(:goal) %>
+
+    <% if was_validated %>
+      <% if goal_was_invalid %>
+        <% goal_class << " is-invalid" %>
+      <% else %>
+        <% goal_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :goal_id %>
+    <!-- Input for goal_id start -->
+    <%= f.number_field :goal_id, class: goal_class, placeholder: "Enter goal" %>
+    <!-- Input for goal_id end -->
+    <% if goal_was_invalid %>
+      <% action_step.errors.full_messages_for(:goal).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for goal_id end -->
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = action_step.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% action_step.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <!-- Label and input for target_date start -->
+  <div class="form-group">
+    <% target_date_class = "form-control" %>
+    <% target_date_was_invalid = action_step.errors.include?(:target_date) %>
+
+    <% if was_validated %>
+      <% if target_date_was_invalid %>
+        <% target_date_class << " is-invalid" %>
+      <% else %>
+        <% target_date_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :target_date %>
+    <!-- Input for target_date start -->
+    <%= f.date_select :target_date, class: target_date_class, placeholder: "Enter target date" %>
+    <!-- Input for target_date end -->
+    <% if target_date_was_invalid %>
+      <% action_step.errors.full_messages_for(:target_date).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for target_date end -->
+  <!-- Label and input for lead_person start -->
+  <div class="form-group">
+    <% lead_person_class = "form-control" %>
+    <% lead_person_was_invalid = action_step.errors.include?(:lead_person) %>
+
+    <% if was_validated %>
+      <% if lead_person_was_invalid %>
+        <% lead_person_class << " is-invalid" %>
+      <% else %>
+        <% lead_person_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :lead_person %>
+    <!-- Input for lead_person start -->
+    <%= f.text_area :lead_person, class: lead_person_class, placeholder: "Enter lead person" %>
+    <!-- Input for lead_person end -->
+    <% if lead_person_was_invalid %>
+      <% action_step.errors.full_messages_for(:lead_person).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for lead_person end -->
+  <!-- Label and input for resources_needed start -->
+  <div class="form-group">
+    <% resources_needed_class = "form-control" %>
+    <% resources_needed_was_invalid = action_step.errors.include?(:resources_needed) %>
+
+    <% if was_validated %>
+      <% if resources_needed_was_invalid %>
+        <% resources_needed_class << " is-invalid" %>
+      <% else %>
+        <% resources_needed_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :resources_needed %>
+    <!-- Input for resources_needed start -->
+    <%= f.text_area :resources_needed, class: resources_needed_class, placeholder: "Enter resources needed" %>
+    <!-- Input for resources_needed end -->
+    <% if resources_needed_was_invalid %>
+      <% action_step.errors.full_messages_for(:resources_needed).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for resources_needed end -->
+  <!-- Label and input for implementation_specifics start -->
+  <div class="form-group">
+    <% implementation_specific_class = "form-control" %>
+    <% implementation_specific_was_invalid = action_step.errors.include?(:implementation_specific) %>
+
+    <% if was_validated %>
+      <% if implementation_specific_was_invalid %>
+        <% implementation_specific_class << " is-invalid" %>
+      <% else %>
+        <% implementation_specific_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :implementation_specifics %>
+    <!-- Input for implementation_specifics start -->
+    <%= f.text_area :implementation_specifics, class: implementation_specific_class, placeholder: "Enter implementation specific" %>
+    <!-- Input for implementation_specifics end -->
+    <% if implementation_specific_was_invalid %>
+      <% action_step.errors.full_messages_for(:implementation_specific).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for implementation_specifics end -->
+  <!-- Label and input for measures_of_success start -->
+  <div class="form-group">
+    <% measures_of_success_class = "form-control" %>
+    <% measures_of_success_was_invalid = action_step.errors.include?(:measures_of_success) %>
+
+    <% if was_validated %>
+      <% if measures_of_success_was_invalid %>
+        <% measures_of_success_class << " is-invalid" %>
+      <% else %>
+        <% measures_of_success_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :measures_of_success %>
+    <!-- Input for measures_of_success start -->
+    <%= f.text_area :measures_of_success, class: measures_of_success_class, placeholder: "Enter measures of success" %>
+    <!-- Input for measures_of_success end -->
+    <% if measures_of_success_was_invalid %>
+      <% action_step.errors.full_messages_for(:measures_of_success).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for measures_of_success end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
