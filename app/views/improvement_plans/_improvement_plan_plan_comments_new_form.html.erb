@@ -1,0 +1,31 @@
+<!-- Form plan_comment start -->
+<%= form_with(model: @plan_comment, local: true) do |f| %>
+<!-- Form plan_comment end -->
+
+  <!-- Label and input for improvement_plan_id start -->
+  <!-- Input for improvement_plan_id start -->
+  <%= f.hidden_field :improvement_plan_id, value: @improvement_plan.id %>
+  <!-- Input for improvement_plan_id end -->
+  <!-- Label and input for improvement_plan_id end -->
+
+  <!-- Label and input for coach_id start -->
+  <div class="form-group">
+    <%= f.label :coach_id %>
+
+    <!-- Input for coach_id start -->
+    <%= f.text_field :coach_id, class: "form-control" %>
+    <!-- Input for coach_id end -->
+  </div>
+  <!-- Label and input for coach_id end -->
+
+  <!-- Label and input for content start -->
+  <div class="form-group">
+    <%= f.label :content %>
+    <!-- Input for content start -->
+    <%= f.text_area :content, rows: "3", class: "form-control" %>
+    <!-- Input for content end -->
+  </div>
+  <!-- Label and input for content end -->
+
+  <%= f.submit "Create plan comment", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

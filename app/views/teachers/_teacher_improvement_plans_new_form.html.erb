@@ -1,0 +1,22 @@
+<!-- Form improvement_plan start -->
+<%= form_with(model: @improvement_plan, local: true) do |f| %>
+<!-- Form improvement_plan end -->
+
+  <!-- Label and input for teacher_id start -->
+  <!-- Input for teacher_id start -->
+  <%= f.hidden_field :teacher_id, value: @teacher.id %>
+  <!-- Input for teacher_id end -->
+  <!-- Label and input for teacher_id end -->
+
+  <!-- Label and input for status start -->
+  <div class="form-group">
+    <%= f.label :status %>
+
+    <!-- Input for status start -->
+    <%= f.text_field :status, class: "form-control" %>
+    <!-- Input for status end -->
+  </div>
+  <!-- Label and input for status end -->
+
+  <%= f.submit "Create improvement plan", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

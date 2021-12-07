@@ -24,7 +24,12 @@ class ActionStepsController < ApplicationController
     @action_step = ActionStep.new(action_step_params)
 
     if @action_step.save
-      redirect_to @action_step, notice: 'Action step was successfully created.'
+      message = 'ActionStep was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @action_step, notice: message
+      end
     else
       render :new
     end

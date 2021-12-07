@@ -24,7 +24,12 @@ class GoalsCommentsController < ApplicationController
     @goals_comment = GoalsComment.new(goals_comment_params)
 
     if @goals_comment.save
-      redirect_to @goals_comment, notice: 'Goals comment was successfully created.'
+      message = 'GoalsComment was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @goals_comment, notice: message
+      end
     else
       render :new
     end

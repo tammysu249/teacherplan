@@ -24,7 +24,12 @@ class InvitesController < ApplicationController
     @invite = Invite.new(invite_params)
 
     if @invite.save
-      redirect_to @invite, notice: 'Invite was successfully created.'
+      message = 'Invite was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @invite, notice: message
+      end
     else
       render :new
     end

@@ -1,0 +1,31 @@
+<!-- Form goals_comment start -->
+<%= form_with(model: @goals_comment, local: true) do |f| %>
+<!-- Form goals_comment end -->
+
+  <!-- Label and input for goal_id start -->
+  <!-- Input for goal_id start -->
+  <%= f.hidden_field :goal_id, value: @goal.id %>
+  <!-- Input for goal_id end -->
+  <!-- Label and input for goal_id end -->
+
+  <!-- Label and input for coach_id start -->
+  <div class="form-group">
+    <%= f.label :coach_id %>
+
+    <!-- Input for coach_id start -->
+    <%= f.text_field :coach_id, class: "form-control" %>
+    <!-- Input for coach_id end -->
+  </div>
+  <!-- Label and input for coach_id end -->
+
+  <!-- Label and input for content start -->
+  <div class="form-group">
+    <%= f.label :content %>
+    <!-- Input for content start -->
+    <%= f.text_area :content, rows: "3", class: "form-control" %>
+    <!-- Input for content end -->
+  </div>
+  <!-- Label and input for content end -->
+
+  <%= f.submit "Create goals comment", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

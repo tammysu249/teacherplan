@@ -8,6 +8,9 @@ class ImprovementPlansController < ApplicationController
 
   # GET /improvement_plans/1
   def show
+    @plan_comment = PlanComment.new
+    @invite = Invite.new
+    @goal = Goal.new
   end
 
   # GET /improvement_plans/new
@@ -24,7 +27,12 @@ class ImprovementPlansController < ApplicationController
     @improvement_plan = ImprovementPlan.new(improvement_plan_params)
 
     if @improvement_plan.save
-      redirect_to @improvement_plan, notice: 'Improvement plan was successfully created.'
+      message = 'ImprovementPlan was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @improvement_plan, notice: message
+      end
     else
       render :new
     end

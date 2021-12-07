@@ -24,7 +24,12 @@ class PlanCommentsController < ApplicationController
     @plan_comment = PlanComment.new(plan_comment_params)
 
     if @plan_comment.save
-      redirect_to @plan_comment, notice: 'Plan comment was successfully created.'
+      message = 'PlanComment was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @plan_comment, notice: message
+      end
     else
       render :new
     end

@@ -8,6 +8,8 @@ class GoalsController < ApplicationController
 
   # GET /goals/1
   def show
+    @goals_comment = GoalsComment.new
+    @action_step = ActionStep.new
   end
 
   # GET /goals/new
@@ -24,7 +26,12 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
 
     if @goal.save
-      redirect_to @goal, notice: 'Goal was successfully created.'
+      message = 'Goal was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @goal, notice: message
+      end
     else
       render :new
     end

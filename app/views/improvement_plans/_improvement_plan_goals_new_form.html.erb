@@ -1,0 +1,22 @@
+<!-- Form goal start -->
+<%= form_with(model: @goal, local: true) do |f| %>
+<!-- Form goal end -->
+
+  <!-- Label and input for improvement_plan_id start -->
+  <!-- Input for improvement_plan_id start -->
+  <%= f.hidden_field :improvement_plan_id, value: @improvement_plan.id %>
+  <!-- Input for improvement_plan_id end -->
+  <!-- Label and input for improvement_plan_id end -->
+
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <%= f.label :description %>
+
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: "form-control" %>
+    <!-- Input for description end -->
+  </div>
+  <!-- Label and input for description end -->
+
+  <%= f.submit "Create goal", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
