@@ -2,30 +2,9 @@
 
 <%= form_with(model: improvement_plan, local: true, novalidate: true, class: "mb-3") do |f| %>
   <!-- Label and input for teacher_id start -->
-  <div class="form-group">
-    <% teacher_class = "form-control" %>
-    <% teacher_was_invalid = improvement_plan.errors.include?(:teacher) %>
-
-    <% if was_validated %>
-      <% if teacher_was_invalid %>
-        <% teacher_class << " is-invalid" %>
-      <% else %>
-        <% teacher_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :teacher_id %>
-    <!-- Input for teacher_id start -->
-    <%= f.collection_select :teacher_id, Teacher.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for teacher_id end -->
-    <% if teacher_was_invalid %>
-      <% improvement_plan.errors.full_messages_for(:teacher).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "teacher_id" start -->
+  <%= f.hidden_field :teacher_id, value: current_teacher.id %>
+  <!-- Input for "teacher_id" end -->
   <!-- Label and input for teacher_id end -->
   <!-- Label and input for status start -->
   <div class="form-group">
