@@ -16,7 +16,7 @@
 
     <%= f.label :teacher_id %>
     <!-- Input for teacher_id start -->
-    <%= f.number_field :teacher_id, class: teacher_class, placeholder: "Enter teacher" %>
+    <%= f.collection_select :teacher_id, Teacher.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for teacher_id end -->
     <% if teacher_was_invalid %>
       <% improvement_plan.errors.full_messages_for(:teacher).each do |message| %>
