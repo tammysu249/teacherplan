@@ -1,24 +1,19 @@
 class GoalsCommentsController < ApplicationController
   before_action :set_goals_comment, only: %i[show edit update destroy]
 
-  # GET /goals_comments
   def index
     @q = GoalsComment.ransack(params[:q])
     @goals_comments = @q.result(distinct: true).includes(:goal).page(params[:page]).per(10)
   end
 
-  # GET /goals_comments/1
   def show; end
 
-  # GET /goals_comments/new
   def new
     @goals_comment = GoalsComment.new
   end
 
-  # GET /goals_comments/1/edit
   def edit; end
 
-  # POST /goals_comments
   def create
     @goals_comment = GoalsComment.new(goals_comment_params)
 
@@ -34,7 +29,6 @@ class GoalsCommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /goals_comments/1
   def update
     if @goals_comment.update(goals_comment_params)
       redirect_to @goals_comment,
@@ -44,7 +38,6 @@ class GoalsCommentsController < ApplicationController
     end
   end
 
-  # DELETE /goals_comments/1
   def destroy
     @goals_comment.destroy
     message = "GoalsComment was successfully deleted."
@@ -57,12 +50,10 @@ class GoalsCommentsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_goals_comment
     @goals_comment = GoalsComment.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def goals_comment_params
     params.require(:goals_comment).permit(:goal_id, :coach_id, :content)
   end

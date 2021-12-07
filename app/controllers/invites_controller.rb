@@ -1,25 +1,20 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: %i[show edit update destroy]
 
-  # GET /invites
   def index
     @q = Invite.ransack(params[:q])
     @invites = @q.result(distinct: true).includes(:coach,
                                                   :improvement_plan).page(params[:page]).per(10)
   end
 
-  # GET /invites/1
   def show; end
 
-  # GET /invites/new
   def new
     @invite = Invite.new
   end
 
-  # GET /invites/1/edit
   def edit; end
 
-  # POST /invites
   def create
     @invite = Invite.new(invite_params)
 
@@ -35,7 +30,6 @@ class InvitesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /invites/1
   def update
     if @invite.update(invite_params)
       redirect_to @invite, notice: "Invite was successfully updated."
@@ -44,7 +38,6 @@ class InvitesController < ApplicationController
     end
   end
 
-  # DELETE /invites/1
   def destroy
     @invite.destroy
     message = "Invite was successfully deleted."
@@ -57,12 +50,10 @@ class InvitesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_invite
     @invite = Invite.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def invite_params
     params.require(:invite).permit(:coach_id, :improvement_plan_id)
   end

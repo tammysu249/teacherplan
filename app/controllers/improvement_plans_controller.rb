@@ -4,29 +4,24 @@ class ImprovementPlansController < ApplicationController
 
   before_action :set_improvement_plan, only: %i[show edit update destroy]
 
-  # GET /improvement_plans
   def index
     @q = ImprovementPlan.ransack(params[:q])
     @improvement_plans = @q.result(distinct: true).includes(:teacher,
                                                             :goals, :invites, :plan_comments, :coaches).page(params[:page]).per(10)
   end
 
-  # GET /improvement_plans/1
   def show
     @plan_comment = PlanComment.new
     @invite = Invite.new
     @goal = Goal.new
   end
 
-  # GET /improvement_plans/new
   def new
     @improvement_plan = ImprovementPlan.new
   end
 
-  # GET /improvement_plans/1/edit
   def edit; end
 
-  # POST /improvement_plans
   def create
     @improvement_plan = ImprovementPlan.new(improvement_plan_params)
 
@@ -42,7 +37,6 @@ class ImprovementPlansController < ApplicationController
     end
   end
 
-  # PATCH/PUT /improvement_plans/1
   def update
     if @improvement_plan.update(improvement_plan_params)
       redirect_to @improvement_plan,
@@ -52,7 +46,6 @@ class ImprovementPlansController < ApplicationController
     end
   end
 
-  # DELETE /improvement_plans/1
   def destroy
     @improvement_plan.destroy
     message = "ImprovementPlan was successfully deleted."
@@ -73,12 +66,10 @@ class ImprovementPlansController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_improvement_plan
     @improvement_plan = ImprovementPlan.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def improvement_plan_params
     params.require(:improvement_plan).permit(:teacher_id, :status)
   end
