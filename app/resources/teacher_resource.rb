@@ -10,6 +10,8 @@ class TeacherResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :improvement_plans
+
   # Indirect associations
 
 end
