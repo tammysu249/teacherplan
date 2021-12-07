@@ -10,6 +10,9 @@ class TeacherResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :invites,
+             foreign_key: :coach_id
+
   has_many   :improvement_plans
 
   # Indirect associations

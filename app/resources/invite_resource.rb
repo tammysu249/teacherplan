@@ -7,6 +7,9 @@ class InviteResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :coach,
+             resource: TeacherResource
+
   # Indirect associations
 
 end
