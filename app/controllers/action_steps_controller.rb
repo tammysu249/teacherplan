@@ -3,7 +3,7 @@ class ActionStepsController < ApplicationController
 
   # GET /action_steps
   def index
-    @action_steps = ActionStep.all
+    @action_steps = ActionStep.page(params[:page]).per(10)
   end
 
   # GET /action_steps/1

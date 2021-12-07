@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @goals_comments, partial: "list_item", as: :goals_comment %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @goals_comments, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>

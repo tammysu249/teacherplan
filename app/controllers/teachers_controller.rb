@@ -3,7 +3,7 @@ class TeachersController < ApplicationController
 
   # GET /teachers
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.page(params[:page]).per(10)
   end
 
   # GET /teachers/1

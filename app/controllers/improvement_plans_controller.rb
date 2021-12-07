@@ -5,7 +5,7 @@ class ImprovementPlansController < ApplicationController
 
   # GET /improvement_plans
   def index
-    @improvement_plans = ImprovementPlan.all
+    @improvement_plans = ImprovementPlan.page(params[:page]).per(10)
   end
 
   # GET /improvement_plans/1

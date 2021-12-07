@@ -3,7 +3,7 @@ class GoalsCommentsController < ApplicationController
 
   # GET /goals_comments
   def index
-    @goals_comments = GoalsComment.all
+    @goals_comments = GoalsComment.page(params[:page]).per(10)
   end
 
   # GET /goals_comments/1

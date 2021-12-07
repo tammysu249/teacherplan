@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
 
   # GET /goals
   def index
-    @goals = Goal.all
+    @goals = Goal.page(params[:page]).per(10)
   end
 
   # GET /goals/1

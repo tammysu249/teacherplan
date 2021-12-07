@@ -3,7 +3,7 @@ class PlanCommentsController < ApplicationController
 
   # GET /plan_comments
   def index
-    @plan_comments = PlanComment.all
+    @plan_comments = PlanComment.page(params[:page]).per(10)
   end
 
   # GET /plan_comments/1
