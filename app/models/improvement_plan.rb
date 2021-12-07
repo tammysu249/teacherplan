@@ -2,21 +2,21 @@ class ImprovementPlan < ApplicationRecord
   # Direct associations
 
   has_many   :plan_comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :invites,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :goals,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :teacher
 
   # Indirect associations
 
   has_many   :coaches,
-             :through => :invites,
-             :source => :coach
+             through: :invites,
+             source: :coach
 
   # Validations
 
@@ -25,5 +25,4 @@ class ImprovementPlan < ApplicationRecord
   def to_s
     teacher.to_s
   end
-
 end

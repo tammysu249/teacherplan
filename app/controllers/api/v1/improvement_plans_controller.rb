@@ -13,7 +13,7 @@ class Api::V1::ImprovementPlansController < Api::V1::GraphitiController
     improvement_plan = ImprovementPlanResource.build(params)
 
     if improvement_plan.save
-      render jsonapi: improvement_plan, status: 201
+      render jsonapi: improvement_plan, status: :created
     else
       render jsonapi_errors: improvement_plan
     end
@@ -33,7 +33,7 @@ class Api::V1::ImprovementPlansController < Api::V1::GraphitiController
     improvement_plan = ImprovementPlanResource.find(params)
 
     if improvement_plan.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: improvement_plan
     end

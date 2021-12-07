@@ -11,5 +11,4 @@ class PlanCommentResource < ApplicationResource
   belongs_to :improvement_plan
 
   # Indirect associations
-
 end

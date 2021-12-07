@@ -4,7 +4,7 @@ class Invite < ApplicationRecord
   belongs_to :improvement_plan
 
   belongs_to :coach,
-             :class_name => "Teacher"
+             class_name: "Teacher"
 
   # Indirect associations
 
@@ -15,5 +15,4 @@ class Invite < ApplicationRecord
   def to_s
     coach.to_s
   end
-
 end

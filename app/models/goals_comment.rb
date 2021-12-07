@@ -12,5 +12,4 @@ class GoalsComment < ApplicationRecord
   def to_s
     goal.to_s
   end
-
 end

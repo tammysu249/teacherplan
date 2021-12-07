@@ -12,5 +12,4 @@ class PlanComment < ApplicationRecord
   def to_s
     improvement_plan.to_s
   end
-
 end

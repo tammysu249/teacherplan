@@ -13,7 +13,7 @@ class Api::V1::PlanCommentsController < Api::V1::GraphitiController
     plan_comment = PlanCommentResource.build(params)
 
     if plan_comment.save
-      render jsonapi: plan_comment, status: 201
+      render jsonapi: plan_comment, status: :created
     else
       render jsonapi_errors: plan_comment
     end
@@ -33,7 +33,7 @@ class Api::V1::PlanCommentsController < Api::V1::GraphitiController
     plan_comment = PlanCommentResource.find(params)
 
     if plan_comment.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: plan_comment
     end

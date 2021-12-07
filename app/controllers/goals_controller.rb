@@ -1,10 +1,11 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: %i[show edit update destroy]
 
   # GET /goals
   def index
     @q = Goal.ransack(params[:q])
-    @goals = @q.result(:distinct => true).includes(:improvement_plan, :action_steps, :goals_comments).page(params[:page]).per(10)
+    @goals = @q.result(distinct: true).includes(:improvement_plan,
+                                                :action_steps, :goals_comments).page(params[:page]).per(10)
   end
 
   # GET /goals/1
@@ -19,17 +20,16 @@ class GoalsController < ApplicationController
   end
 
   # GET /goals/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /goals
   def create
     @goal = Goal.new(goal_params)
 
     if @goal.save
-      message = 'Goal was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Goal was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @goal, notice: message
       end
@@ -41,7 +41,7 @@ class GoalsController < ApplicationController
   # PATCH/PUT /goals/1
   def update
     if @goal.update(goal_params)
-      redirect_to @goal, notice: 'Goal was successfully updated.'
+      redirect_to @goal, notice: "Goal was successfully updated."
     else
       render :edit
     end
@@ -51,22 +51,22 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     message = "Goal was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to goals_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_goal
-      @goal = Goal.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def goal_params
-      params.require(:goal).permit(:improvement_plan_id, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_goal
+    @goal = Goal.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def goal_params
+    params.require(:goal).permit(:improvement_plan_id, :description)
+  end
 end

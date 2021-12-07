@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe GoalsCommentResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'goals_comments',
-          attributes: { }
-        }
+          type: "goals_comments",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe GoalsCommentResource, type: :resource do
       GoalsCommentResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { GoalsComment.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { GoalsComment.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:goals_comment) { create(:goals_comment) }
 
     let(:payload) do
       {
         data: {
           id: goals_comment.id.to_s,
-          type: 'goals_comments',
-          attributes: { } # Todo!
-        }
+          type: "goals_comments",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe GoalsCommentResource, type: :resource do
       GoalsCommentResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { goals_comment.reload.updated_at }
+      end.to change { goals_comment.reload.updated_at }
       # .and change { goals_comment.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:goals_comment) { create(:goals_comment) }
 
     let(:instance) do
       GoalsCommentResource.find(id: goals_comment.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { GoalsComment.count }.by(-1)
+      end.to change { GoalsComment.count }.by(-1)
     end
   end
 end

@@ -1,20 +1,19 @@
 class Teacher < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :invites,
-             :foreign_key => "coach_id",
-             :dependent => :destroy
+             foreign_key: "coach_id",
+             dependent: :destroy
 
   has_many   :improvement_plans,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :improvement_plan_assignments,
-             :through => :invites,
-             :source => :improvement_plan
+             through: :invites,
+             source: :improvement_plan
 
   # Validations
 

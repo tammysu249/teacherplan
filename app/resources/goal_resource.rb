@@ -14,5 +14,4 @@ class GoalResource < ApplicationResource
   belongs_to :improvement_plan
 
   # Indirect associations
-
 end

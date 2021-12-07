@@ -13,7 +13,7 @@ class Api::V1::TeachersController < Api::V1::GraphitiController
     teacher = TeacherResource.build(params)
 
     if teacher.save
-      render jsonapi: teacher, status: 201
+      render jsonapi: teacher, status: :created
     else
       render jsonapi_errors: teacher
     end
@@ -33,7 +33,7 @@ class Api::V1::TeachersController < Api::V1::GraphitiController
     teacher = TeacherResource.find(params)
 
     if teacher.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: teacher
     end

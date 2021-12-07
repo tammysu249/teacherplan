@@ -13,7 +13,7 @@ class Api::V1::GoalsCommentsController < Api::V1::GraphitiController
     goals_comment = GoalsCommentResource.build(params)
 
     if goals_comment.save
-      render jsonapi: goals_comment, status: 201
+      render jsonapi: goals_comment, status: :created
     else
       render jsonapi_errors: goals_comment
     end
@@ -33,7 +33,7 @@ class Api::V1::GoalsCommentsController < Api::V1::GraphitiController
     goals_comment = GoalsCommentResource.find(params)
 
     if goals_comment.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: goals_comment
     end

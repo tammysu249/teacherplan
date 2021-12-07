@@ -1,15 +1,15 @@
 class InvitesController < ApplicationController
-  before_action :set_invite, only: [:show, :edit, :update, :destroy]
+  before_action :set_invite, only: %i[show edit update destroy]
 
   # GET /invites
   def index
     @q = Invite.ransack(params[:q])
-    @invites = @q.result(:distinct => true).includes(:coach, :improvement_plan).page(params[:page]).per(10)
+    @invites = @q.result(distinct: true).includes(:coach,
+                                                  :improvement_plan).page(params[:page]).per(10)
   end
 
   # GET /invites/1
-  def show
-  end
+  def show; end
 
   # GET /invites/new
   def new
@@ -17,17 +17,16 @@ class InvitesController < ApplicationController
   end
 
   # GET /invites/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /invites
   def create
     @invite = Invite.new(invite_params)
 
     if @invite.save
-      message = 'Invite was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Invite was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @invite, notice: message
       end
@@ -39,7 +38,7 @@ class InvitesController < ApplicationController
   # PATCH/PUT /invites/1
   def update
     if @invite.update(invite_params)
-      redirect_to @invite, notice: 'Invite was successfully updated.'
+      redirect_to @invite, notice: "Invite was successfully updated."
     else
       render :edit
     end
@@ -49,22 +48,22 @@ class InvitesController < ApplicationController
   def destroy
     @invite.destroy
     message = "Invite was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to invites_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invite
-      @invite = Invite.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def invite_params
-      params.require(:invite).permit(:coach_id, :improvement_plan_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invite
+    @invite = Invite.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def invite_params
+    params.require(:invite).permit(:coach_id, :improvement_plan_id)
+  end
 end

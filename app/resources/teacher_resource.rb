@@ -19,5 +19,4 @@ class TeacherResource < ApplicationResource
 
   many_to_many :improvement_plan_assignments,
                resource: ImprovementPlanResource
-
 end

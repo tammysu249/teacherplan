@@ -13,5 +13,4 @@ class InviteResource < ApplicationResource
              resource: TeacherResource
 
   # Indirect associations
-
 end

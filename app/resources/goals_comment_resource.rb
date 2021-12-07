@@ -11,5 +11,4 @@ class GoalsCommentResource < ApplicationResource
   belongs_to :goal
 
   # Indirect associations
-
 end

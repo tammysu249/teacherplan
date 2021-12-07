@@ -13,7 +13,7 @@ class Api::V1::InvitesController < Api::V1::GraphitiController
     invite = InviteResource.build(params)
 
     if invite.save
-      render jsonapi: invite, status: 201
+      render jsonapi: invite, status: :created
     else
       render jsonapi_errors: invite
     end
@@ -33,7 +33,7 @@ class Api::V1::InvitesController < Api::V1::GraphitiController
     invite = InviteResource.find(params)
 
     if invite.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: invite
     end
